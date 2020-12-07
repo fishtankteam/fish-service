@@ -1,0 +1,44 @@
+plugins {
+	 id 'application'
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.template'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	compileOnly("org.springframework.boot:spring-boot-devtools")
+	
+	//Unit Testing
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+application {
+    mainClassName = 'com.template.springbootgradle.SpringbootgradleApplication'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    enabled = false
+}
+
+test {
+	useJUnitPlatform()
+	testLogging.showStandardStreams = true
+	testLogging {
+	events "passed", "skipped", "failed"
+	}
+}
